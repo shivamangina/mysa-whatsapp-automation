@@ -42,3 +42,11 @@ If you're new to Flask or working on larger Flask projects, understanding this s
 ## Running the App
 When you want to run the app, just execute the run.py script. It will create the app instance and run the Flask development server.
 Lastly, it's good to note that when you deploy the app to a production environment, you might not use run.py directly (especially if you use something like Gunicorn or uWSGI). Instead, you'd just need the application instance, which is created using create_app(). The details of this vary depending on your deployment strategy, but it's a point to keep in mind.
+
+
+
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```

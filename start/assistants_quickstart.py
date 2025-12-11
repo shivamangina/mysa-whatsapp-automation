@@ -9,22 +9,16 @@ OPEN_AI_API_KEY = os.getenv("OPEN_AI_API_KEY")
 client = OpenAI(api_key=OPEN_AI_API_KEY)
 
 
-# --------------------------------------------------------------
-# Upload file
-# --------------------------------------------------------------
-def upload_file(path):
-    # Upload a file with an "assistants" purpose
-    file = client.files.create(file=open(path, "rb"), purpose="assistants")
-    return file
 
 
-file = upload_file("../data/airbnb-faq.pdf")
+
+
 
 
 # --------------------------------------------------------------
 # Create assistant
 # --------------------------------------------------------------
-def create_assistant(file):
+def create_assistant():
     """
     You currently cannot set the temperature for Assistant via the API.
     """
@@ -33,12 +27,11 @@ def create_assistant(file):
         instructions="You're a helpful WhatsApp assistant that can assist guests that are staying in our Paris AirBnb. Use your knowledge base to best respond to customer queries. If you don't know the answer, say simply that you cannot help with question and advice to contact the host directly. Be friendly and funny.",
         tools=[{"type": "retrieval"}],
         model="gpt-4-1106-preview",
-        file_ids=[file.id],
     )
     return assistant
 
 
-assistant = create_assistant(file)
+assistant = create_assistant()
 
 
 # --------------------------------------------------------------
